@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
@@ -17,6 +17,7 @@ dependencies:
   dartz: ^0.10.1
   dio: ^4.0.6
   firebase_core: ^1.20.0
+  firebase_auth: ^3.3.9
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
@@ -32,6 +33,7 @@ dependencies:
   json_annotation: ^4.5.0
   rxdart: ^0.27.5
   uuid: ^3.0.6
+  firebase_database: ^9.1.0
 
 dev_dependencies:
   auto_route_generator: ^4.0.0

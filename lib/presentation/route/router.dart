@@ -13,13 +13,13 @@ import 'route_paths.dart';
   replaceInRouteName: "View,Route",
   routes: [
     AutoRoute(
-      path: RoutePaths.LOGIN,
-      page: LoginView,
+      path: RoutePaths.REGISTER,
+      page: RegisterView,
       initial: true,
     ),
     AutoRoute(
-      path: RoutePaths.REGISTER,
-      page: RegisterView,
+      path: RoutePaths.LOGIN,
+      page: LoginView,
     ),
     AutoRoute(
       path: RoutePaths.APP,

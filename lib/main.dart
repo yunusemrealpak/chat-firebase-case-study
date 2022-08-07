@@ -8,7 +8,7 @@ import 'injection.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   configureInjection(Environment.dev);
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -31,12 +31,12 @@ class MyApp extends StatelessWidget {
         ),
       ),
       routerDelegate: AutoRouterDelegate(
-          appRouter,
-          // navigatorObservers: () => [
-          //   FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
-          // ],
-        ),
-        routeInformationParser: appRouter.defaultRouteParser(),
+        appRouter,
+        // navigatorObservers: () => [
+        //   FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
+        // ],
+      ),
+      routeInformationParser: appRouter.defaultRouteParser(),
     );
   }
 }
