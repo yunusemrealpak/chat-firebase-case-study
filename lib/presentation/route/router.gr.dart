@@ -30,11 +30,11 @@ class AppRouter extends _i8.RootStackRouter {
   final Map<String, _i8.PageFactory> pagesMap = {
     LoginRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.LoginView());
+          routeData: routeData, child: _i1.LoginView());
     },
     RegisterRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.RegisterView());
+          routeData: routeData, child: _i2.RegisterView());
     },
     AppRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
