@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>600670661396-ma76v4rue436o6pihkl6qd2gq62pu6uv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.600670661396-ma76v4rue436o6pihkl6qd2gq62pu6uv</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB37zZyx4DSQO7tPyaD6T-_tdlp1F6VX-U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>600670661396</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.chatFirebase</string>
+	<key>PROJECT_ID</key>
+	<string>chatcasestudy</string>
+	<key>STORAGE_BUCKET</key>
+	<string>chatcasestudy.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:600670661396:ios:199aae6519027c9e3c3001</string>
+	<key>DATABASE_URL</key>
+	<string>https://chatcasestudy-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

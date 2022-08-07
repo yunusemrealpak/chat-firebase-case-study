@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "600670661396",
+    "firebase_url": "https://chatcasestudy-default-rtdb.firebaseio.com",
+    "project_id": "chatcasestudy",
+    "storage_bucket": "chatcasestudy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600670661396:android:2d87b78af8b42b573c3001",
+        "android_client_info": {
+          "package_name": "com.example.chat_case_study"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600670661396-312t6eecuosbqfgres1d20kh168iud4e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT0ZEAyHgwAfrg6P9Gt1GgrcWuTGHJBX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600670661396-312t6eecuosbqfgres1d20kh168iud4e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "600670661396-102gs24j7fkve8604gi3q7lub6ltmurb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chatCaseStudy"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600670661396:android:55d55d6e1160c7103c3001",
+        "android_client_info": {
+          "package_name": "com.example.chat_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600670661396-312t6eecuosbqfgres1d20kh168iud4e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT0ZEAyHgwAfrg6P9Gt1GgrcWuTGHJBX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600670661396-312t6eecuosbqfgres1d20kh168iud4e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "600670661396-102gs24j7fkve8604gi3q7lub6ltmurb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chatCaseStudy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
