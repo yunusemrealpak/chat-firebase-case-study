@@ -15,8 +15,8 @@ import 'package:auto_route/auto_route.dart' as _i8;
 import 'package:flutter/material.dart' as _i9;
 
 import '../app/view/app_view.dart' as _i3;
-import '../auth/login/view/login_view.dart' as _i1;
-import '../auth/register/view/register_view.dart' as _i2;
+import '../auth/login/view/login_view.dart' as _i2;
+import '../auth/register/view/register_view.dart' as _i1;
 import '../chat/view/chat_details_view.dart' as _i7;
 import '../chat/view/chat_list_view.dart' as _i6;
 import '../chat/view/chat_view.dart' as _i5;
@@ -28,13 +28,17 @@ class AppRouter extends _i8.RootStackRouter {
 
   @override
   final Map<String, _i8.PageFactory> pagesMap = {
-    LoginRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i1.LoginView());
-    },
     RegisterRoute.name: (routeData) {
+      final args = routeData.argsAs<RegisterRouteArgs>(
+          orElse: () => const RegisterRouteArgs());
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i2.RegisterView());
+          routeData: routeData, child: _i1.RegisterView(key: args.key));
+    },
+    LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i2.LoginView(key: args.key));
     },
     AppRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
@@ -65,8 +69,8 @@ class AppRouter extends _i8.RootStackRouter {
   List<_i8.RouteConfig> get routes => [
         _i8.RouteConfig('/#redirect',
             path: '/', redirectTo: '/login', fullMatch: true),
-        _i8.RouteConfig(LoginRoute.name, path: '/login'),
         _i8.RouteConfig(RegisterRoute.name, path: '/register'),
+        _i8.RouteConfig(LoginRoute.name, path: '/login'),
         _i8.RouteConfig(AppRoute.name, path: '/app', children: [
           _i8.RouteConfig(HomeRoute.name, path: 'home', parent: AppRoute.name),
           _i8.RouteConfig(ChatRoute.name,
@@ -88,19 +92,44 @@ class AppRouter extends _i8.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.LoginView]
-class LoginRoute extends _i8.PageRouteInfo<void> {
-  const LoginRoute() : super(LoginRoute.name, path: '/login');
+/// [_i1.RegisterView]
+class RegisterRoute extends _i8.PageRouteInfo<RegisterRouteArgs> {
+  RegisterRoute({_i9.Key? key})
+      : super(RegisterRoute.name,
+            path: '/register', args: RegisterRouteArgs(key: key));
+
+  static const String name = 'RegisterRoute';
+}
+
+class RegisterRouteArgs {
+  const RegisterRouteArgs({this.key});
+
+  final _i9.Key? key;
+
+  @override
+  String toString() {
+    return 'RegisterRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i2.LoginView]
+class LoginRoute extends _i8.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({_i9.Key? key})
+      : super(LoginRoute.name, path: '/login', args: LoginRouteArgs(key: key));
 
   static const String name = 'LoginRoute';
 }
 
-/// generated route for
-/// [_i2.RegisterView]
-class RegisterRoute extends _i8.PageRouteInfo<void> {
-  const RegisterRoute() : super(RegisterRoute.name, path: '/register');
+class LoginRouteArgs {
+  const LoginRouteArgs({this.key});
 
-  static const String name = 'RegisterRoute';
+  final _i9.Key? key;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

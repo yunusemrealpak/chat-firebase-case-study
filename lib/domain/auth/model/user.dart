@@ -8,6 +8,7 @@ class User with _$User {
   const factory User({
     String? id,
     String? name,
+    String? tag,
     @Default(false) bool inRoom,
     @Default(false) bool isOnline,
   }) = _User;

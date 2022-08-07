@@ -27,13 +27,15 @@ class FirestoreRepository extends IFirestoreRepository {
   }
 
   @override
-  Stream<Chatroom> getChatroom(String chatRoomId) {
+  Stream<Chatroom> getChatroom(String userId, String chatRoomId) {
     return CombineLatestStream.combine3<
             DocumentSnapshot<Map<String, dynamic>>,
             QuerySnapshot<Map<String, dynamic>>,
             QuerySnapshot<Map<String, dynamic>>,
             Chatroom>(
         _firestore
+            .collection("users")
+            .doc(userId)
             .collection("chatrooms")
             .doc(chatRoomId)
             .snapshots(), //or whatever your first stream is
@@ -127,7 +129,7 @@ class FirestoreRepository extends IFirestoreRepository {
   @override
   Future setInRoom(String chatRoomId, String userId, bool status) async {
     if(status) {
-      _firestore.collection("users").doc(userId).collection("chatrooms").doc(chatRoomId).set({
+      _firestore.collection("users").doc(userId).collection("chatrooms").doc(chatRoomId).update({
         'unreadMessages': 0,
       });
     }
@@ -137,7 +139,7 @@ class FirestoreRepository extends IFirestoreRepository {
         .doc(chatRoomId)
         .collection("users")
         .doc(userId)
-        .set({
+        .update({
       "inRoom": status,
     });
   }

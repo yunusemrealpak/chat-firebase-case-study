@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/auto_route.dart';
+import 'package:chat_case_study/application/auth/auth_cubit.dart';
 import 'package:chat_case_study/application/chat/chat_cubit.dart';
 import 'package:chat_case_study/application/chat/chat_state.dart';
 import 'package:chat_case_study/presentation/_core/base_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChatDetailsView extends StatefulWidget {
   final String chatRoomId;
@@ -83,7 +85,7 @@ class _ChatDetailsViewState extends State<ChatDetailsView> {
                   final message = state.chatroom!.messages.elementAt(index);
                   return ChatBubble(
                     text: message.body!,
-                    isCurrentUser: message.senderId == "123",
+                    isCurrentUser: message.senderId == context.read<AuthCubit>().state.user?.id,
                   );
                 },
               ),

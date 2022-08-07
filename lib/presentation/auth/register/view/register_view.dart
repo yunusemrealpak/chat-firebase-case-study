@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:chat_case_study/application/auth/signin/signin_cubit.dart';
 import 'package:chat_case_study/application/auth/signin/signin_state.dart';
 import 'package:chat_case_study/presentation/_core/base_view.dart';
@@ -7,15 +8,37 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/widgets/base_widgets.dart';
 import '../../../route/route_paths.dart';
 
-class RegisterView extends StatelessWidget {
+class RegisterView extends StatefulWidget {
   RegisterView({Key? key}) : super(key: key);
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  @override
+  State<RegisterView> createState() => _RegisterViewState();
+}
+
+class _RegisterViewState extends State<RegisterView> {
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BaseView<SigninCubit, SigninState>(
+      onCubitReady: (cubit) {
+        cubit.setContext(context);
+      },
       builder: (context, cubit, state) => Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 48.0),
@@ -27,8 +50,7 @@ class RegisterView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 50),
                     child: TextButton(
                         onPressed: () {
-                          Navigator.of(context)
-                              .pushReplacementNamed(RoutePaths.LOGIN);
+                          context.router.pushNamed(RoutePaths.LOGIN);
                         },
                         child: Text(
                           "Giriş yap",

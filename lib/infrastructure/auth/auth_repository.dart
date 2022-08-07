@@ -15,6 +15,7 @@ import '../../core/exceptions/firebase_error_code.dart';
 
 @LazySingleton(as: IAuthRepository)
 class AuthRepository extends IAuthRepository {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final StreamController<User?> _streamController = StreamController<User?>();
 
   @override
@@ -29,11 +30,20 @@ class AuthRepository extends IAuthRepository {
           .signInWithEmailAndPassword(email: email, password: password);
       if (userCredential.user != null) {
         User user = User(
-            id: userCredential.user!.uid,
-            name: userCredential.user!.email,
-            isOnline: true);
+          id: userCredential.user!.uid,
+          name: userCredential.user!.email,
+          tag: userCredential.user!.email!.substring(0, 2).toUpperCase(),
+          isOnline: true,
+        );
+
+        _streamController.add(user);
+
         await _setUserOnline(user);
+
+        return Right(user);
       }
+
+      return const Left(Failure(message: "Hata oluştu. Tekrar deneyin."));
     } catch (e) {
       FBAuth.FirebaseAuthException exception =
           e as FBAuth.FirebaseAuthException;
@@ -45,11 +55,9 @@ class AuthRepository extends IAuthRepository {
       } else if (exception.code == kInvalidEmailError) {
         errorMessage = "Invalid email";
       }
-      if (kDebugMode) {
-        print(errorMessage);
-      }
+
+      return Left(Failure(message: errorMessage));
     }
-    throw UnimplementedError();
   }
 
   @override
@@ -61,8 +69,19 @@ class AuthRepository extends IAuthRepository {
       User user = User(
           id: userCredential.user!.uid,
           name: userCredential.user!.email,
+          tag: userCredential.user!.email!.substring(0, 2).toUpperCase(),
           isOnline: true);
+
+      _streamController.add(user);
+
+      var userDoc = await _firestore.collection("users").doc(user.id).get();
+      if (!userDoc.exists) {
+        await _firestore.collection("users").doc(user.id).set(user.toJson());
+      }
+
       await _setUserOnline(user);
+
+      return Right(user);
     } catch (e) {
       FBAuth.FirebaseAuthException exception =
           e as FBAuth.FirebaseAuthException;
@@ -74,12 +93,9 @@ class AuthRepository extends IAuthRepository {
       } else if (exception.code == kInvalidEmailError) {
         errorMessage = "Invalid email";
       }
-      if (kDebugMode) {
-        print(errorMessage);
-      }
-    }
 
-    throw UnimplementedError();
+      return Left(Failure(message: errorMessage));
+    }
   }
 
   @override
@@ -97,9 +113,17 @@ class AuthRepository extends IAuthRepository {
 
   Future<void> _setUserOnline(User user) async {
     _databaseReference = FirebaseDatabase.instance.ref("users/${user.id}");
+
     _databaseReference
         .onDisconnect()
         .set({"isOnline": false, "userId": user.id});
     await _databaseReference.set({"isOnline": true, "userId": user.id});
+  }
+
+  @override
+  Stream<bool> userOnlineStatus(String userId) {
+    var databaseReference = FirebaseDatabase.instance.ref("users/$userId");
+    return databaseReference.onValue.map(
+        (event) => (event.snapshot.value as Map<dynamic, dynamic>)["isOnline"]);
   }
 }

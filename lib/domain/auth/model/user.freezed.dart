@@ -22,6 +22,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  String? get tag => throw _privateConstructorUsedError;
   bool get inRoom => throw _privateConstructorUsedError;
   bool get isOnline => throw _privateConstructorUsedError;
 
@@ -34,7 +35,8 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String? id, String? name, bool inRoom, bool isOnline});
+  $Res call(
+      {String? id, String? name, String? tag, bool inRoom, bool isOnline});
 }
 
 /// @nodoc
@@ -49,6 +51,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? tag = freezed,
     Object? inRoom = freezed,
     Object? isOnline = freezed,
   }) {
@@ -60,6 +63,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tag: tag == freezed
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
               as String?,
       inRoom: inRoom == freezed
           ? _value.inRoom
@@ -78,7 +85,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
       __$$_UserCopyWithImpl<$Res>;
   @override
-  $Res call({String? id, String? name, bool inRoom, bool isOnline});
+  $Res call(
+      {String? id, String? name, String? tag, bool inRoom, bool isOnline});
 }
 
 /// @nodoc
@@ -94,6 +102,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? tag = freezed,
     Object? inRoom = freezed,
     Object? isOnline = freezed,
   }) {
@@ -105,6 +114,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tag: tag == freezed
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
               as String?,
       inRoom: inRoom == freezed
           ? _value.inRoom
@@ -122,7 +135,11 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_User implements _User {
   const _$_User(
-      {this.id, this.name, this.inRoom = false, this.isOnline = false});
+      {this.id,
+      this.name,
+      this.tag,
+      this.inRoom = false,
+      this.isOnline = false});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -130,6 +147,8 @@ class _$_User implements _User {
   final String? id;
   @override
   final String? name;
+  @override
+  final String? tag;
   @override
   @JsonKey()
   final bool inRoom;
@@ -139,7 +158,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, inRoom: $inRoom, isOnline: $isOnline)';
+    return 'User(id: $id, name: $name, tag: $tag, inRoom: $inRoom, isOnline: $isOnline)';
   }
 
   @override
@@ -149,6 +168,7 @@ class _$_User implements _User {
             other is _$_User &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.tag, tag) &&
             const DeepCollectionEquality().equals(other.inRoom, inRoom) &&
             const DeepCollectionEquality().equals(other.isOnline, isOnline));
   }
@@ -159,6 +179,7 @@ class _$_User implements _User {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(tag),
       const DeepCollectionEquality().hash(inRoom),
       const DeepCollectionEquality().hash(isOnline));
 
@@ -179,6 +200,7 @@ abstract class _User implements User {
   const factory _User(
       {final String? id,
       final String? name,
+      final String? tag,
       final bool inRoom,
       final bool isOnline}) = _$_User;
 
@@ -188,6 +210,8 @@ abstract class _User implements User {
   String? get id;
   @override
   String? get name;
+  @override
+  String? get tag;
   @override
   bool get inRoom;
   @override

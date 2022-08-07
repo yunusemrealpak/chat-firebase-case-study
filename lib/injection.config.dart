@@ -27,7 +27,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i7.SigninCubit>(
       () => _i7.SigninCubit(get<_i3.IAuthRepository>()));
   gh.factory<_i8.AuthCubit>(() => _i8.AuthCubit(get<_i3.IAuthRepository>()));
-  gh.factory<_i9.ChatCubit>(
-      () => _i9.ChatCubit(get<_i5.IFirestoreRepository>()));
+  gh.factory<_i9.ChatCubit>(() => _i9.ChatCubit(
+      get<_i3.IAuthRepository>(), get<_i5.IFirestoreRepository>()));
   return get;
 }

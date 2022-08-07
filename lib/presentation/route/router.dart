@@ -15,11 +15,12 @@ import 'route_paths.dart';
     AutoRoute(
       path: RoutePaths.REGISTER,
       page: RegisterView,
-      initial: true,
+      
     ),
     AutoRoute(
       path: RoutePaths.LOGIN,
       page: LoginView,
+      initial: true,
     ),
     AutoRoute(
       path: RoutePaths.APP,

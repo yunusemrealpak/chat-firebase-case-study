@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:chat_case_study/application/chat/chat_cubit.dart';
 import 'package:chat_case_study/application/chat/chat_state.dart';
@@ -32,13 +34,28 @@ class ChatListView extends StatelessWidget {
                   children: [
                     CircleAvatar(
                         backgroundColor: Colors.grey[200],
-                        child: const Text('TB')),
-                    const Positioned(
-                      bottom: 5,
-                      right: -1,
-                      child: CircleAvatar(
-                          backgroundColor: Colors.green, radius: 5),
-                    )
+                        child: Text(
+                            chatroom.roomName?.substring(0, 2).toUpperCase() ??
+                                "")),
+                    StreamBuilder<bool>(
+                      stream: cubit.userOnlineStatus(chatroom.receiverId!),
+                      builder: (BuildContext context, snapshot) {
+                        if (snapshot.hasData) {
+                          print(snapshot.data);
+                          final bool isOnline = snapshot.data ?? false;
+                          return Positioned(
+                            bottom: 5,
+                            right: -1,
+                            child: CircleAvatar(
+                                backgroundColor:
+                                    isOnline ? Colors.green : Colors.grey,
+                                radius: 5),
+                          );
+                        } else {
+                          return const SizedBox();
+                        }
+                      },
+                    ),
                   ],
                 ),
                 title: Row(

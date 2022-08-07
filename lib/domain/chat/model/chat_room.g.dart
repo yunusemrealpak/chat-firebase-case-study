@@ -23,8 +23,8 @@ Map<String, dynamic> _$$_ChatroomToJson(_$_Chatroom instance) =>
       'id': instance.id,
       'roomName': instance.roomName,
       'receiverId': instance.receiverId,
-      'createdDate': instance.createdDate?.toIso8601String(),
-      'updatedDate': instance.updatedDate?.toIso8601String(),
+      'createdDate': FieldValue.serverTimestamp(),
+      'updatedDate': FieldValue.serverTimestamp(),
       'unreadMessages': instance.unreadMessages,
       'lastMessage': instance.lastMessage,
     };

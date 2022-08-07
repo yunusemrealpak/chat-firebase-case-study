@@ -7,4 +7,6 @@ abstract class IAuthRepository {
   Future<Either<Failure, User>> signInWithEmailAndPassword(String email, String password);
   Future<Either<Failure, User>> signUpWithEmailAndPassword(String email, String password);
   Future<bool> signOut();
+
+  Stream<bool> userOnlineStatus(String userId);
 }
